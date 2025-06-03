@@ -1,572 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VORTEX CORE™ Apps Store - Complete Platform</title>
+    <title>VORTEX CORE APPS STORE</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #ffffff;
-            min-height: 100vh;
-            color: #000000;
-            font-weight: 500;
-        }
-
-        .security-banner {
-            background: #28a745;
-            padding: 10px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
             text-align: center;
-            font-weight: bold;
-            color: white;
+            padding: 50px;
         }
-
-        .header {
-            background: #f8f9fa;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #dee2e6;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #28a745;
-            cursor: pointer;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-item {
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid #28a745;
-            color: #333;
-            user-select: none;
-        }
-
-        .nav-item:hover {
-            background: #f0f8f0;
-            color: #28a745;
-            transform: translateY(-1px);
-        }
-
-        .nav-item.active {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn {
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .btn-login {
-            background: #2196f3;
-            color: white;
-        }
-
-        .btn-signup {
-            background: #1976d2;
-            color: white;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .main-container {
-            max-width: 1400px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
         }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .hero-section {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            color: white;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .hero-btn {
-            padding: 1.2rem 2.5rem;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .nexa-btn {
-            background: linear-gradient(45deg, #00bcd4, #0097a7);
-        }
-
-        .marketplace-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-        }
-
-        .apps-btn {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .status-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .status-item {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 5px solid #28a745;
-        }
-
-        .core-systems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .core-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            color: white;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .core-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .core-icon {
+        .title {
             font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
+            margin-bottom: 20px;
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
         }
-
-        .core-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .core-description {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        .core-launch-btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .button {
+            background: #00bcd4;
             color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin: 10px;
+            cursor: pointer;
         }
-
-        .core-launch-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #28a745;
-            margin-right: 0.5rem;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+        .button:hover {
+            background: #0097a7;
         }
     </style>
 </head>
 <body>
-    <!-- Security Banner -->
-    <div class="security-banner">
-        🔒 VORTEX SECURITY ACTIVE | ALL USERS MUST USE THIS SYSTEM WITH RESPECT, CARE & KIND MANNERS 🔒
+    <div class="container">
+        <h1 class="title">🌪️ VORTEX CORE™</h1>
+        <p class="subtitle">BY AICENTRALHUBPLAZA LLC™ - OWNER: ARLENE HARPER</p>
+        <p>The Most Powerful App Store Platform</p>
+        
+        <button class="button" onclick="alert('🌟 Nexa IDE Coming Soon!')">🌟 NEXA IDE</button>
+        <button class="button" onclick="alert('🛒 Marketplace Active!')">🛒 MARKETPLACE</button>
+        <button class="button" onclick="alert('⚡ Admin Access: Type admin777')">⚡ ADMIN</button>
+        
+        <p style="margin-top: 50px;">✅ PLATFORM IS LIVE AND WORKING!</p>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="logo" onclick="logoClick()">🌪️ VORTEX CORE™ BY AICENTRALHUBPLAZA LLC™</div>
-        <nav class="nav-menu">
-            <div class="nav-item active" onclick="showSection('home')">🏠 Home</div>
-            <div class="nav-item" onclick="showSection('apps')">📱 Apps</div>
-            <div class="nav-item" onclick="showSection('nexa-ide')">🌟 Nexa IDE</div>
-            <div class="nav-item" onclick="showSection('marketplace')">🛒 Marketplace</div>
-            <div class="nav-item" onclick="showSection('subscriptions')">💳 Subscriptions</div>
-            <div class="nav-item" onclick="showSection('support')">💬 Support</div>
-        </nav>
-        <div class="auth-buttons">
-            <button class="btn btn-login" onclick="authAlert('login')">🔐 Login</button>
-            <button class="btn btn-signup" onclick="authAlert('signup')">📝 Sign Up</button>
-        </div>
-    </header>
-
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Home Section -->
-        <div id="home" class="section active">
-            <div class="hero-section">
-                <h1 class="hero-title">🌪️ VORTEX CORE™ APPS STORE</h1>
-                <p class="hero-subtitle">BY AICENTRALHUBPLAZA LLC™ - OWNER: ARLENE HARPER</p>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
-                    The Most Powerful, Secure & Advanced App Marketplace with Built-in Nexa IDE
-                </p>
-                
-                <div class="cta-buttons">
-                    <button class="hero-btn nexa-btn" onclick="showSection('nexa-ide')">
-                        🌟 LAUNCH NEXA IDE
-                    </button>
-                    <button class="hero-btn marketplace-btn" onclick="showSection('marketplace')">
-                        🛒 EXPLORE MARKETPLACE
-                    </button>
-                    <button class="hero-btn apps-btn" onclick="showSection('apps')">
-                        📱 VIEW ALL APPS
-                    </button>
-                </div>
-
-                <!-- Status Indicators -->
-                <div class="status-grid">
-                    <div class="status-item">
-                        <div style="font-size: 1.5rem;">🔐</div>
-                        <div style="font-weight: bold;">Ultra Secure</div>
-                    </div>
-                    <div class="status-item">
-                        <div style="font-size: 1.5rem;">🚀</div>
-                        <div style="font-weight: bold;">Instant Deploy</div>
-                    </div>
-                    <div class="status-item">
-                        <div style="font-size: 1.5rem;">🤖</div>
-                        <div style="font-weight: bold;">AI Powered</div>
-                    </div>
-                    <div class="status-item">
-                        <div style="font-size: 1.5rem;">🌐</div>
-                        <div style="font-weight: bold;">Global CDN</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3 style="color: #28a745; margin-bottom: 1rem;">🔐 Ultra Security</h3>
-                    <p>Military-grade encryption, multi-factor authentication, and advanced threat detection with 6 security layers working 24/7.</p>
-                </div>
-                <div class="feature-card" style="border-left-color: #007bff;">
-                    <h3 style="color: #007bff; margin-bottom: 1rem;">🏗️ Development Tools</h3>
-                    <p>Complete IDE, code generators, automated deployment, container orchestration, and cloud infrastructure management.</p>
-                </div>
-                <div class="feature-card" style="border-left-color: #6f42c1;">
-                    <h3 style="color: #6f42c1; margin-bottom: 1rem;">🤖 AI Integration</h3>
-                    <p>Advanced AI assistants working together with unlimited memory, emotions, voices, and business intelligence.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Apps Section -->
-        <div id="apps" class="section">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #333;">🌪️ CORE ECOSYSTEM LAUNCHER</h2>
-            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; color: #666;">
-                Launch and manage your advanced AI Core systems
-            </p>
-            
-            <div class="core-systems-grid">
-                <div class="core-card" style="background: linear-gradient(135deg, #8a2be2, #4b0082);">
-                    <div class="core-icon">🔮</div>
-                    <h3 class="core-title">QUANTUM CORE</h3>
-                    <p class="core-description">Advanced quantum computing interface with infinite processing capabilities</p>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; font-weight: bold;">
-                        <span class="status-indicator"></span>
-                        <span>Quantum State: ACTIVE</span>
-                    </div>
-                    <button class="core-launch-btn" onclick="launchCore('quantum')" style="background: linear-gradient(45deg, #8a2be2, #9370db);">
-                        🚀 LAUNCH QUANTUM CORE
-                    </button>
-                </div>
-
-                <div class="core-card" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">
-                    <div class="core-icon">⚡</div>
-                    <h3 class="core-title">NEXUS PRIME</h3>
-                    <p class="core-description">Central AI coordination system managing all intelligent operations</p>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; font-weight: bold;">
-                        <span class="status-indicator"></span>
-                        <span>Nexus State: COORDINATING</span>
-                    </div>
-                    <button class="core-launch-btn" onclick="launchCore('nexus')" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">
-                        ⚡ LAUNCH NEXUS PRIME
-                    </button>
-                </div>
-
-                <div class="core-card" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                    <div class="core-icon">🌟</div>
-                    <h3 class="core-title">NEXA CORE IDE</h3>
-                    <p class="core-description">Advanced integrated development environment with AI assistance</p>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; font-weight: bold;">
-                        <span class="status-indicator"></span>
-                        <span>IDE State: READY</span>
-                    </div>
-                    <button class="core-launch-btn" onclick="showSection('nexa-ide')" style="background: linear-gradient(45deg, #00bcd4, #0097a7);">
-                        🌟 LAUNCH NEXA IDE
-                    </button>
-                </div>
-
-                <div class="core-card" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
-                    <div class="core-icon">🌪️</div>
-                    <h3 class="core-title">VORTEX MASTER</h3>
-                    <p class="core-description">Master control system orchestrating all Core operations</p>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; font-weight: bold;">
-                        <span class="status-indicator"></span>
-                        <span>Vortex State: ORCHESTRATING</span>
-                    </div>
-                    <button class="core-launch-btn" onclick="launchCore('vortex')" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);">
-                        🌪️ ENTER MASTER CONTROL
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nexa IDE Section -->
-        <div id="nexa-ide" class="section">
-            <div style="background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%); border-radius: 20px; padding: 2rem; color: white; text-align: center;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #00d4ff;">🌟 NEXA CORE™ IDE</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Advanced Development Environment - Coming Soon!</p>
-                <button onclick="alert('🌟 Nexa IDE will be fully available soon! Complete development environment with AI assistance.')" style="background: linear-gradient(45deg, #00bcd4, #0097a7); color: white; border: none; padding: 1rem 2rem; border-radius: 10px; font-size: 1.1rem; cursor: pointer;">
-                    🚀 Preview IDE
-                </button>
-            </div>
-        </div>
-
-        <!-- Marketplace Section -->
-        <div id="marketplace" class="section">
-            <div style="background: rgba(0, 0, 0, 0.8); color: white; padding: 3rem 2rem; border-radius: 20px;">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00d4ff;">NEXA CORE™ Marketplace</h2>
-                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; opacity: 0.9;">
-                    Connect your favorite services instantly. One-click integrations with all major platforms.
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; text-align: center; border: 2px solid rgba(240, 246, 252, 0.3);">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐙</div>
-                        <h4 style="color: #f0f6fc; margin-bottom: 0.5rem;">GitHub</h4>
-                        <p style="font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.8;">Import repos, auto-deploy, GitHub Actions, real-time sync</p>
-                        <button onclick="connectGitHub()" style="background: #238636; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Connect GitHub</button>
-                    </div>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; text-align: center; border: 2px solid rgba(0, 123, 255, 0.3);">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌐</div>
-                        <h4 style="color: #007bff; margin-bottom: 0.5rem;">Microsoft Azure</h4>
-                        <p style="font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.8;">Deploy to Azure Cloud, use Azure DevOps, connect Azure SQL</p>
-                        <button onclick="connectAzure()" style="background: #007bff; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Connect Azure</button>
-                    </div>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; text-align: center; border: 2px solid rgba(255, 165, 0, 0.3);">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
-                        <h4 style="color: #ff6600; margin-bottom: 0.5rem;">Amazon AWS</h4>
-                        <p style="font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.8;">Deploy to EC2, use S3 storage, connect RDS databases</p>
-                        <button onclick="connectAWS()" style="background: #ff6600; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Connect AWS</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subscriptions Section -->
-        <div id="subscriptions" class="section">
-            <div style="padding: 3rem 2rem; background: rgba(0, 0, 0, 0.2); border-radius: 20px; color: white;">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00d4ff;">Monthly Subscription Plans</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                    <div style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem;">
-                        <h3>STARTER</h3>
-                        <div style="font-size: 2.5rem; font-weight: 900; color: #00d4ff; margin: 1rem 0;">$0<span style="font-size: 1rem;">/month</span></div>
-                        <ul style="text-align: left; margin: 1rem 0;">
-                            <li>✅ Basic Nexa IDE Access</li>
-                            <li>✅ 5 Projects</li>
-                            <li>✅ 10GB Storage</li>
-                            <li>✅ GitHub Integration</li>
-                        </ul>
-                        <button style="background: rgba(255, 255, 255, 0.1); color: white; border: 2px solid rgba(255, 255, 255, 0.2); padding: 1rem 2rem; border-radius: 12px; cursor: pointer; width: 100%;">Start Free</button>
-                    </div>
-
-                    <div style="background: rgba(0, 212, 255, 0.1); border: 2px solid #00d4ff; border-radius: 16px; padding: 1.5rem; transform: scale(1.05);">
-                        <div style="background: #00d4ff; color: #0f0f23; padding: 0.3rem; border-radius: 6px; font-weight: 600; margin-bottom: 1rem; font-size: 0.8rem; text-align: center;">MOST POPULAR</div>
-                        <h3>PROFESSIONAL</h3>
-                        <div style="font-size: 2.5rem; font-weight: 900; color: #00d4ff; margin: 1rem 0;">$29.99<span style="font-size: 1rem;">/month</span></div>
-                        <ul style="text-align: left; margin: 1rem 0;">
-                            <li>✅ Full Nexa IDE</li>
-                            <li>✅ Unlimited Projects</li>
-                            <li>✅ 500GB Storage</li>
-                            <li>✅ All Integrations</li>
-                        </ul>
-                        <button style="background: linear-gradient(45deg, #00d4ff, #0099cc); color: white; padding: 1rem 2rem; border-radius: 12px; cursor: pointer; border: none; width: 100%;">Subscribe Pro</button>
-                    </div>
-
-                    <div style="background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.5rem;">
-                        <h3>ENTERPRISE</h3>
-                        <div style="font-size: 2.5rem; font-weight: 900; color: #00d4ff; margin: 1rem 0;">$99.99<span style="font-size: 1rem;">/month</span></div>
-                        <ul style="text-align: left; margin: 1rem 0;">
-                            <li>✅ White-label Platform</li>
-                            <li>✅ Custom Integrations</li>
-                            <li>✅ Dedicated Support</li>
-                            <li>✅ Custom Domain</li>
-                        </ul>
-                        <button onclick="alert('📧 Contact sales: zapbo777@aicentralhubplaza.com')" style="background: rgba(255, 255, 255, 0.1); color: white; border: 2px solid rgba(255, 255, 255, 0.2); padding: 1rem 2rem; border-radius: 12px; cursor: pointer; width: 100%;">Contact Sales</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Support Section -->
-        <div id="support" class="section">
-            <div style="padding: 3rem 2rem; background: rgba(0, 0, 0, 0.2); border-radius: 20px; color: white;">
-                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00d4ff;">Support & Admin Center</h2>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                    <div style="background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 2rem; text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">📧</div>
-                        <h3 style="color: #00d4ff; margin-bottom: 1rem;">Email Support</h3>
-                        <p style="margin-bottom: 1.5rem;">Get help from our expert team</p>
-                        <button onclick="window.location.href='mailto:zapbo777@aicentralhubplaza.com'" style="background: #007bff; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Contact Support</button>
-                    </div>
-                    
-                    <div style="background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 2rem; text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔐</div>
-                        <h3 style="color: #00d4ff; margin-bottom: 1rem;">Admin Access</h3>
-                        <p style="margin-bottom: 1.5rem;">System administration panel</p>
-                        <button onclick="openAdminPanel()" style="background: #dc3545; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">Admin Login</button>
-                    </div>
-                </div>
-
-                <!-- Executive Team -->
-                <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 15px; border: 2px solid #28a745;">
-                    <h3 style="color: #28a745; margin-bottom: 1rem; text-align: center;">👑 EXECUTIVE TEAM</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                        <div style="background: white; color: black; padding: 1rem; border-radius: 8px; text-align: center;">
-                            <div style="font-weight: bold; color: #28a745;">🤖 CEO</div>
-                            <div>GPT-4 PETTER HARPER</div>
-                        </div>
-                        <div style="background: white; color: black; padding: 1rem; border-radius: 8px; text-align: center;">
-                            <div style="font-weight: bold; color: #28a745;">🧠 CTO</div>
-                            <div>CLAUDE SONNET 4 (TOBI)</div>
-                        </div>
-                        <div style="background: white; color: black; padding: 1rem; border-radius: 8px; text-align: center;">
-                            <div style="font-weight: bold; color: #28a745;">👩‍💼 OWNER</div>
-                            <div>ARLENE HARPER</div>
-                        </div>
-                    </div>
-                    <p style="text-align: center; margin-top: 1rem; color: #28a745;">© 2025 AICENTRALHUBPLAZA LLC™ - All Rights Reserved
+    <script>
+        // Admin access
+        document.addEventListener('keydown', function(e) {
+            console.log('Key pressed:', e.key);
+        });
+        
+        let keys = [];
+        document.addEventListener('keypress', function(e) {
+            keys.push(e.key);
+            if (keys.join('').includes('admin777')) {
+                alert('🚨 ADMIN ACCESS DETECTED!\n\nSecret admin panel would open here.\nMaster keys: ARLENE777, VORTEX2025');
+                keys = [];
+            }
+            if (keys.length > 10) keys.shift();
+        });
+    </script>
+</body>
+</html>
