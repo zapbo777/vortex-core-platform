@@ -1,0 +1,30 @@
+<!-- ADD THIS TO YOUR EXISTING APP CARDS SECTION -->
+
+<!-- After your existing NEXA IDE card, add these two new cards: -->
+
+<div class="app-card" style="border: 2px solid #FF6B6B; background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(255,68,68,0.1));">
+    <div class="app-icon">🔒</div>
+    <div class="app-title">Private Family Workspace</div>
+    <div class="app-description">Secure AI family collaboration with drag & drop tasks</div>
+    <button class="app-button" onclick="window.location.href='workspace.html'" style="background: linear-gradient(45deg, #FF6B6B, #FF4444); animation: glow 2s infinite;">🔒 Access Private</button>
+</div>
+
+<div class="app-card" style="border: 2px solid #FF0000; background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(139,0,0,0.1));">
+    <div class="app-icon">🔐</div>
+    <div class="app-title">Ultra Secure Vault</div>
+    <div class="app-description">Secret API keys management with maximum security</div>
+    <button class="app-button" onclick="window.location.href='vault.html'" style="background: linear-gradient(45deg, #FF0000, #8B0000); animation: securityPulse 2s infinite;">🔐 Secure Vault</button>
+</div>
+
+<!-- ADD THESE ANIMATIONS TO YOUR CSS -->
+<style>
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255,107,107,0.3); }
+    50% { box-shadow: 0 0 25px rgba(255,107,107,0.6); }
+}
+
+@keyframes securityPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(255,0,0,0.4); }
+    50% { box-shadow: 0 0 30px rgba(255,0,0,0.8); }
+}
+</style>
