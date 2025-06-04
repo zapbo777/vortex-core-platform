@@ -27,4 +27,17 @@
     0%, 100% { box-shadow: 0 0 15px rgba(255,0,0,0.4); }
     50% { box-shadow: 0 0 30px rgba(255,0,0,0.8); }
 }
-</style>
+</style>// Hidden Access Functions
+function accessHiddenWorkspace() {
+    const code = prompt('🔒 Family Access Code:');
+    if (code && (code.toLowerCase() === 'family' || code === 'VORTEX2025')) {
+        window.open('workspace.html', '_blank');
+    }
+}
+
+function accessConcealedVault() {
+    const vault = prompt('🔐 Vault Access Code:');
+    if (vault && (vault === 'VORTEX2025' || vault.toLowerCase() === 'vault')) {
+        window.open('vault.html', '_blank');
+    }
+}
